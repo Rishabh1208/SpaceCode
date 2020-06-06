@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import Auth from './components/container/auth';
 import './App.css';
+import AddProduct from './components/container/addProduct';
+import Table from './components/container/table';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div>
+			<BrowserRouter>
+				<Switch>
+					<Route exact path='/' component={Auth} />
+					<Route path='/list' component={Table} />
+					<Route path='/add' component={AddProduct} />
+					<Redirect
+						to={{
+							pathname: '/',
+						}}
+					/>
+				</Switch>
+			</BrowserRouter>
+		</div>
+	);
 }
 
 export default App;
